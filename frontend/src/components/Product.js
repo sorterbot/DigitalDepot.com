@@ -11,6 +11,7 @@ function Product({ product }) {
         </Link>
 
         <Card.Body>
+
             <Link to={`/product/${product._id}`}>
                 <Card.Title as="div">
                     <strong>{product.name}</strong>
@@ -26,9 +27,7 @@ function Product({ product }) {
             <Card.Text as="h3">
                 ${product.price}
             </Card.Text>
-            
-            
-
+                    
         </Card.Body>
     </Card>
   )
