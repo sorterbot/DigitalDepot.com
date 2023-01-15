@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Button, Card, } from 'react-bootstrap'
@@ -17,7 +17,7 @@ function ProductScreen({match}) {
     useEffect(() => {
         dispatch(listProductDetails(match.params.id))
    
-    }, [])  
+    }, [dispatch, match])  
 
 
   return (
@@ -26,7 +26,8 @@ function ProductScreen({match}) {
       {
         loading ? <Loader />
             : error ? <Message variant='danger'>{error}</Message>
-            :(
+            :(  
+                <div>
                 <Row>
 
                 <Col md={6}>
@@ -86,6 +87,7 @@ function ProductScreen({match}) {
                 </Col>
                 
               </Row>
+              </div>
             ) 
       }
     
