@@ -42,4 +42,3 @@ function HomeScreen() {
 
 export default HomeScreen
 
-//  "proxy": "http://127.0.0.1:8000",
