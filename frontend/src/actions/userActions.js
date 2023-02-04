@@ -13,7 +13,7 @@ import {
     USER_DETAILS_REQUEST,
     USER_DETAILS_SUCCESS,
     USER_DETAILS_FAIL,
-    // USER_DETAILS_RESET,
+    USER_DETAILS_RESET,
 
     USER_UPDATE_PROFILE_REQUEST,
     USER_UPDATE_PROFILE_SUCCESS,
@@ -48,7 +48,7 @@ export const login = (email, password) => async (dispatch) => {
         }
 
         const { data } = await axios.post(
-            '/api/users/login/',
+            'http://localhost:8000/api/users/login/',
             { 'username': email, 'password': password },
             config
         )
@@ -73,6 +73,7 @@ export const login = (email, password) => async (dispatch) => {
 export const logout = () => (dispatch) => {
     localStorage.removeItem('userInfo')
     dispatch({type:USER_LOGOUT})
+    dispatch({type:USER_DETAILS_RESET})
 }
 
 
@@ -90,7 +91,7 @@ export const register = (name, email, password) => async (dispatch) => {
         }
 
         const { data } = await axios.post(
-            '/api/users/register/',
+            'http://localhost:8000/api/users/register/',
             { 'name':name ,'email': email, 'password': password },
             config
         )
@@ -135,7 +136,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
         }
 
         const { data } = await axios.get(
-            `/api/users/${id}/`,
+            `http://localhost:8000/api/users/${id}/`,
             config
         )
 
@@ -173,7 +174,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
         }
 
         const { data } = await axios.put(
-            `/api/users/profile/update/`,
+            `http://localhost:8000/api/users/profile/update/`,
             user,
             config
         )
