@@ -5,8 +5,8 @@ import { Form, Button, Row, Col} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import { getUserDetails, } from '../actions/userActions'
-// import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
+import { getUserDetails, updateUserProfile } from '../actions/userActions'
+import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
 // import { listMyOrders } from '../actions/orderActions'
 
 function ProfileScreen({ history }) {
@@ -25,8 +25,8 @@ function ProfileScreen({ history }) {
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
 
-    // const userUpdateProfile = useSelector(state => state.userUpdateProfile)
-    // const { success } = userUpdateProfile
+    const userUpdateProfile = useSelector(state => state.userUpdateProfile)
+    const { success } = userUpdateProfile
 
     // const orderListMy = useSelector(state => state.orderListMy)
     // const { loading: loadingOrders, error: errorOrders, orders } = orderListMy
@@ -36,8 +36,8 @@ function ProfileScreen({ history }) {
         if (!userInfo) {
             history.push('/login')
         } else {
-            if (!user || !user.name || userInfo._id !== user._id) {
-                // dispatch({ type: USER_UPDATE_PROFILE_RESET })
+            if (!user || !user.name || success || userInfo._id !== user._id) {
+                dispatch({ type: USER_UPDATE_PROFILE_RESET })
                 dispatch(getUserDetails('profile'))
                 // dispatch(listMyOrders())
             } else {
@@ -45,7 +45,7 @@ function ProfileScreen({ history }) {
                 setEmail(user.email)
             }
         }
-    }, [dispatch, history, userInfo, user,])
+    }, [dispatch, history, userInfo, user, success, ])
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -53,14 +53,13 @@ function ProfileScreen({ history }) {
         if (password !== confirmPassword) {
             setMessage('Passwords do not match')
         } else {
-            console.log('Updating..')
-            // dispatch(updateUserProfile({
-            //     'id': user._id,
-            //     'name': name,
-            //     'email': email,
-            //     'password': password
-            // }))
-            // setMessage('')
+            dispatch(updateUserProfile({
+                'id': user._id,
+                'name': name,
+                'email': email,
+                'password': password
+            }))
+            setMessage('')
         }
 
     }
