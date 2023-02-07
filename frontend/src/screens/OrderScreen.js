@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
+import {  Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { PayPalButton } from 'react-paypal-button-v2'
@@ -62,7 +62,7 @@ function OrderScreen({ match, history }) {
                 setSdkReady(true)
             }
         }
-    }, [dispatch, order, orderId, successPay,])
+    }, [dispatch, order, orderId, successPay, history, userInfo])
 
 
     const successPaymentHandler = (paymentResult) => {
