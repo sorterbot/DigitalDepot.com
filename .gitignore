@@ -2,6 +2,10 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=django
 
 ### Django ###
+
+/Users/richardkruse/Desktop/CodeLab/UdemyIvy/backend/backend/settings.py
+backend/backend/settings.py
+
 *.log
 *.pot
 *.pyc
