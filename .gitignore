@@ -1,14 +1,7 @@
-backend/backend/settings.py
-/Users/richardkruse/Desktop/CodeLab/UdemyIvy/backend/backend/settings.py
-
 # Created by https://www.toptal.com/developers/gitignore/api/django
 # Edit at https://www.toptal.com/developers/gitignore?templates=django
 
 ### Django ###
-
-/Users/richardkruse/Desktop/CodeLab/UdemyIvy/backend/backend/settings.py
-backend/backend/settings.py
-
 *.log
 *.pot
 *.pyc
