@@ -22,7 +22,7 @@ import os
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'x+!uq8hww)bhqq9qykbq_jm*tp0!twqxmc&=6ij(9x3ip5j9)!'
+SECRET_KEY = os.environ.get('DD_SECRETKEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -186,8 +186,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 AWS_QUERYSTRING_AUTH = False
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_S3_ACCESS_KEY_ID = 'AKIARDPX5CQUVLNXLQV3'
-AWS_S3_SECRET_ACCESS_KEY = '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'
+AWS_S3_ACCESS_KEY_ID = os.environ.get('DD_AWS_ACCESSKEY')
+AWS_S3_SECRET_ACCESS_KEY = os.environ.get('DD_AWS_SECRETKEY')
 AWS_STORAGE_BUCKET_NAME = 'digitaldepot-bucket'
 
 if os.getcwd() == '/app':
